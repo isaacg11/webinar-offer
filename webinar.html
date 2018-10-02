@@ -44,11 +44,10 @@
                     xhrFields: { withCredentials: true },
                     dataType:'json',
                     success:function(data){
-                      console.log(data)
-                      // if(data.directLinking) window.location.replace(data.url + '?cid=' + data.cid)
-                      // else iframe.src= data.url + '?cid=' + data.cid;
-                      // document.title = data.url;
-                      // document.cookie = 'cid=' + data.cid;
+                      if(data.directLinking) window.location.replace(data.url)
+                      else iframe.src= data.url + '?cid=' + data.cid;
+                      document.title = data.url;
+                      document.cookie = 'cid=' + data.cid;
 
                     },
                 });
