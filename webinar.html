@@ -30,6 +30,7 @@
                 let queryString = window.location.search;
                 queryString = queryString.substring(1);
 
+
                 let data = JSON.stringify(Object.assign({
                   campaignId : "ced521f8-23ad-4ff8-90bf-ae901a5ead74",
                   url: window.location.href
@@ -42,7 +43,7 @@
                     crossDomain:true,
                     xhrFields: { withCredentials: true },
                     dataType:'json',
-                    success:function(data){
+                    success:function(data) {
                       if(data.directLinking) {
                         window.location.replace(data.url)
                       } else { 
