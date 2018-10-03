@@ -30,29 +30,26 @@
                 let queryString = window.location.search;
                 queryString = queryString.substring(1);
 
-                console.log(queryString)
-                console.log(parseQueryString(queryString))
+                let data = JSON.stringify(Object.assign({
+                  campaignId : "ced521f8-23ad-4ff8-90bf-ae901a5ead74",
+                  url: window.location.href
+                },{customVars : parseQueryString(queryString)}))
 
-                // let data = JSON.stringify(Object.assign({
-                //   campaignId : "ced521f8-23ad-4ff8-90bf-ae901a5ead74",
-                //   url: window.location.href
-                // },{customVars : parseQueryString(queryString)}))
+                $.ajax({
+                    type:'POST',
+                    url: url,
+                    data:data,
+                    crossDomain:true,
+                    xhrFields: { withCredentials: true },
+                    dataType:'json',
+                    success:function(data){
+                      if(data.directLinking) window.location.replace(data.url)
+                      else iframe.src= data.url + '?cid=' + data.cid;
+                      document.title = data.url;
+                      document.cookie = 'cid=' + data.cid;
 
-                // $.ajax({
-                //     type:'POST',
-                //     url: url,
-                //     data:data,
-                //     crossDomain:true,
-                //     xhrFields: { withCredentials: true },
-                //     dataType:'json',
-                //     success:function(data){
-                //       if(data.directLinking) window.location.replace(data.url)
-                //       else iframe.src= data.url + '?cid=' + data.cid;
-                //       document.title = data.url;
-                //       document.cookie = 'cid=' + data.cid;
-
-                //     },
-                // });
+                    },
+                });
               })
 
               var parseQueryString = function( queryString ) {
