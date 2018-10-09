@@ -13,6 +13,12 @@
                 onLoadTime = Math.round(load.getTime() / 1000);
             }); 
 
+            // window.addEventListener('click', function(event) {
+            //     if(event.target.localName === 'a') {
+
+            //     }
+            // })
+
             window.addEventListener('beforeunload', function(event) {
                 var unload = new Date(); 
                 var onUnloadTime = Math.round(unload.getTime() / 1000); 
