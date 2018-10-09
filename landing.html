@@ -4,6 +4,26 @@
     </head>
     <body>
         <h1>Landing Page</h1>
-        <a href="http://localhost:3000/click">Go to offer</a>
+        <a href="http://localhost:5000/click" target="_blank">Go to offer</a>
+
+        <script>
+            var onLoadTime; 
+            window.addEventListener('load', function() {
+                var load = new Date(); 
+                onLoadTime = Math.round(load.getTime() / 1000);
+            }); 
+
+            window.addEventListener('beforeunload', function(event) {
+                var unload = new Date(); 
+                var onUnloadTime = Math.round(unload.getTime() / 1000); 
+                var duration = onUnloadTime - onLoadTime; 
+                // send AJAX request
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "http://localhost:5000/landingVisitor", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("fname=Henry&lname=Ford");
+                event.returnValue = '';
+            })
+        </script>
     </body>
 </html>
