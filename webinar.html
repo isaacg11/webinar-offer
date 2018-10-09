@@ -15,12 +15,26 @@
               {
                 margin: 0; padding: 0; height: 100%; overflow: hidden;
               }
+              #content {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+              }
+              #iframe {
+                width: 1px;
+                min-width: 100%;
+                *width: 100%;
+                height: 100%;
+                border: ;
+              }
             </style>
             <title></title>
           </head>
           <body>
-            <div id="content" style="position:absolute; left: 0; right: 0; bottom: 0; top: 0px;">
-              <iframe id='iframe' src="" width="100%" height="100%" style="border:0;"></iframe>
+            <div id="content">
+              <iframe id='iframe' src="" scrolling='no'></iframe>
             </div>
             <script type="text/javascript">
               $(document).ready(function(){
@@ -32,7 +46,7 @@
 
 
                 let data = JSON.stringify(Object.assign({
-                  campaignId : "d8dc5697-efc1-40c1-a142-5e363488c0a0",
+                  campaignId : "bc387121-656b-4614-80a6-5691fb80b64c",
                   url: window.location.href
                 },{customVars : parseQueryString(queryString)}))
 
@@ -46,7 +60,7 @@
                     success:function(data) {
                       if(data.directLinking) {
                         window.location.replace(data.url)
-                      } else { 
+                      } else {
                         iframe.src = data.url + '?cid=' + data.cid;
                         document.title = data.url;
                         document.cookie = 'cid=' + data.cid;
