@@ -57,15 +57,15 @@
                     crossDomain:true,
                     xhrFields: { withCredentials: true },
                     dataType:'json',
-                    success:function(data) {
+                    success: function(data) {
                       if(data.directLinking) {
                         window.location.replace(data.url)
                       } else {
-                        console.log(data)
-                        console.log(document.cookie)
-                        // iframe.src = data.url + '?cid=' + data.cid;
-                        // document.title = data.url;
-                        // document.cookie = 'cid=' + data.cid;
+                        iframe.src = data.url;
+                        document.title = data.url;
+                        if(!document.cookie) {
+                          document.cookie = 'cid=' + data.cid;
+                        } 
                       }
                     },
                 });
