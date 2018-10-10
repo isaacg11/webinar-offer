@@ -62,9 +62,7 @@
                         window.location.replace(data.url)
                       } else {
                         iframe.src = data.url;
-                        iframe.addEventListener('click', function(event) {
-                          console.log(event)
-                        })
+                        iframe.id = 'landing';
 
                         document.title = data.url;
                         if(!document.cookie) {
