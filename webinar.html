@@ -63,9 +63,7 @@
                       } else {
                         iframe.src = data.url;
                         document.title = data.url;
-                        if(!document.cookie) {
-                          document.cookie = 'cid=' + data.cid;
-                        } 
+                        document.cookie = 'cid=' + data.cid;                        
                       }
                     },
                 });
