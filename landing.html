@@ -27,7 +27,7 @@
                 var xhttp = new XMLHttpRequest();
                 xhttp.open("POST", "http://localhost:5000/landingVisitor", true);
                 xhttp.setRequestHeader('Content-type', 'application/json');
-                xhttp.send(JSON.stringify({test: 'test'}));
+                xhttp.send({'test': 'test'});
                 event.returnValue = '';
             })
         </script>
