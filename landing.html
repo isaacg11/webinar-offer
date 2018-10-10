@@ -8,9 +8,15 @@
 
         <script>
 
-            document.getElementById('landing').addEventListener('click', function(event) {
-                console.log(event)
-            })
+            window.addEventListener('load', function() {
+                console.log('start time')
+            }, false);
+
+            window.addEventListener('beforeunload', function() {
+                console.log('stop time')
+                event.returnValue = '';
+            });
+
 
             // var onLoadTime; 
             // window.addEventListener('load', function() {
