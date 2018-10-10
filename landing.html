@@ -19,7 +19,11 @@
                 var xmlhttp = new XMLHttpRequest();   
                 xmlhttp.open("POST", "http://localhost:5000/landingVisitor");
                 xmlhttp.setRequestHeader("Content-Type", "application/json");
-                xmlhttp.send(JSON.stringify({duration: visitDuration, clickId: visitClickId}));
+                xmlhttp.send(JSON.stringify({
+                    duration: visitDuration, 
+                    clickId: visitClickId
+                }));
+                
                 event.returnValue = '';
             });
         </script>
