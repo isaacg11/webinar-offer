@@ -9,18 +9,16 @@
         <script>
             var onload;
             window.addEventListener("load", function() {
-                var loadDate = new Date();
-                onload = Math.round(loadDate.getTime() / 1000);
+                onload = new Date();
             });
 
             window.addEventListener("beforeunload", function() {
-                var unloadDate = new Date();
-                var unload = Math.round(unloadDate.getTime() / 1000);
-                var visitDuration = unload - onload;
+                var unload = new Date();
+                var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000);
                 var xmlhttp = new XMLHttpRequest();   
                 xmlhttp.open("POST", "http://localhost:5000/landingVisitor");
                 xmlhttp.setRequestHeader("Content-Type", "application/json");
-                xmlhttp.send(JSON.stringify({duration: visitDuration}));
+                xmlhttp.send(JSON.stringify({duration: 'test'}));
                 event.returnValue = '';
             });
         </script>
