@@ -15,26 +15,12 @@
               {
                 margin: 0; padding: 0; height: 100%; overflow: hidden;
               }
-              #content {
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                top: 0;
-              }
-              #iframe {
-                width: 1px;
-                min-width: 100%;
-                *width: 100%;
-                height: 100%;
-                border: 0;
-              }
             </style>
             <title></title>
           </head>
           <body>
-            <div id="content">
-              <iframe id='iframe' src="" scrolling='no'></iframe>
+            <div id="content" style="position:absolute; left: 0; right: 0; bottom: 0; top: 0px;">
+              <iframe id='iframe' src="" width="100%" height="100%" style="border:0;"></iframe>
             </div>
             <script type="text/javascript">
               $(document).ready(function(){
@@ -46,7 +32,7 @@
 
 
                 let data = JSON.stringify(Object.assign({
-                  campaignId : "6d4ed052-34a2-4640-a477-e3661aaed657",
+                  campaignId : "6101970d-12af-4632-9677-376feb2f750f",
                   url: window.location.href
                 },{customVars : parseQueryString(queryString)}))
 
@@ -57,13 +43,13 @@
                     crossDomain:true,
                     xhrFields: { withCredentials: true },
                     dataType:'json',
-                    success: function(data) {
+                    success:function(data) {
                       if(data.directLinking) {
                         window.location.replace(data.url)
                       } else {
-                        iframe.src = data.url;
+                        iframe.src = data.url + '?cid=' + data.cid;
                         document.title = data.url;
-                        document.cookie = 'cid=' + data.cid;                        
+                        document.cookie = 'cid=' + data.cid;
                       }
                     },
                 });
