@@ -10,40 +10,15 @@
 
             window.addEventListener('load', function() {
                 console.log('start time')
-            }, false);
-
-            window.addEventListener('beforeunload', function() {
-                console.log('stop time')
-                event.returnValue = '';
             });
 
-
-            // var onLoadTime; 
-            // window.addEventListener('load', function() {
-            //     var load = new Date(); 
-            //     onLoadTime = Math.round(load.getTime() / 1000);
-            // }); 
-
-            // window.addEventListener('click', function(event) {
-            //     if(event.target.localName === 'a') {
-
-            //     }
-            // })
-
-
-            // window.addEventListener('beforeunload', function(event) {
-            //     console.log('HIT')
-
-            //     var unload = new Date(); 
-            //     var onUnloadTime = Math.round(unload.getTime() / 1000); 
-            //     var duration = onUnloadTime - onLoadTime; 
-            //     // send AJAX request
-            //     var xhttp = new XMLHttpRequest();
-            //     xhttp.open("POST", "http://localhost:5000/landingVisitor", true);
-            //     xhttp.setRequestHeader('Content-type', 'application/json');
-            //     xhttp.send({'test': 'test'});
-            //     event.returnValue = '';
-            // })
+            window.addEventListener('beforeunload', function() {
+                var xmlhttp = new XMLHttpRequest();   
+                xmlhttp.open("POST", "http://localhost:5000/landingVisitor");
+                xmlhttp.setRequestHeader("Content-Type", "application/json");
+                xmlhttp.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
+                event.returnValue = '';
+            });
         </script>
     </body>
 </html>
