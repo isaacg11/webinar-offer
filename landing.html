@@ -7,16 +7,20 @@
         <a href="http://localhost:5000/click" target="_blank">Go to offer</a>
 
         <script>
-
-            window.addEventListener('load', function() {
-                console.log('start time')
+            var onload;
+            window.addEventListener("load", function() {
+                var loadDate = new Date();
+                onload = Math.round(loadDate.getTime() / 1000);
             });
 
-            window.addEventListener('beforeunload', function() {
+            window.addEventListener("beforeunload", function() {
+                var unloadDate = new Date();
+                var unload = Math.round(unloadDate.getTime() / 1000);
+                var visitDuration = unload - onload;
                 var xmlhttp = new XMLHttpRequest();   
                 xmlhttp.open("POST", "http://localhost:5000/landingVisitor");
                 xmlhttp.setRequestHeader("Content-Type", "application/json");
-                xmlhttp.send(JSON.stringify({name:"John Rambo", time:"2pm"}));
+                xmlhttp.send(JSON.stringify({duration: visitDuration}));
                 event.returnValue = '';
             });
         </script>
