@@ -14,23 +14,24 @@
             }); 
 
             window.addEventListener('click', function(event) {
-                console.log('HIT')
                 // if(event.target.localName === 'a') {
 
                 // }
             })
 
-            // window.addEventListener('beforeunload', function(event) {
-            //     var unload = new Date(); 
-            //     var onUnloadTime = Math.round(unload.getTime() / 1000); 
-            //     var duration = onUnloadTime - onLoadTime; 
-            //     // send AJAX request
-            //     var xhttp = new XMLHttpRequest();
-            //     xhttp.open("POST", "http://localhost:5000/landingVisitor", true);
-            //     xhttp.setRequestHeader('Content-type', 'application/json');
-            //     xhttp.send({'test': 'test'});
-            //     event.returnValue = '';
-            // })
+            window.addEventListener('beforeunload', function(event) {
+                console.log('HIT')
+
+                // var unload = new Date(); 
+                // var onUnloadTime = Math.round(unload.getTime() / 1000); 
+                // var duration = onUnloadTime - onLoadTime; 
+                // // send AJAX request
+                // var xhttp = new XMLHttpRequest();
+                // xhttp.open("POST", "http://localhost:5000/landingVisitor", true);
+                // xhttp.setRequestHeader('Content-type', 'application/json');
+                // xhttp.send({'test': 'test'});
+                // event.returnValue = '';
+            })
         </script>
     </body>
 </html>
