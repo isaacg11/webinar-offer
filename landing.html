@@ -5,6 +5,20 @@
     <body>
         <h1>Landing Page</h1>
         <a href="http://localhost:5000/click" target="_blank">Go to offer</a>
-        <script>var onload; window.addEventListener("load", function() { onload = new Date(); }); window.addEventListener("beforeunload", function() { var unload = new Date(); var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); var visitClickId = document.cookie.split('=')[1]; var xmlhttp = new XMLHttpRequest(); xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); xmlhttp.setRequestHeader("Content-Type", "application/json"); xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); event.returnValue = ''; });</script>
+        <a href="tel:18008888888" target="_blank">Go to offer</a>
+
+        <script>
+
+            window.addEventListener("click", function(event) {
+                if(event.target.localName === 'a') {
+                    var visitClickId = document.cookie.split('=')[1]; 
+                    var xmlhttp = new XMLHttpRequest(); xmlhttp.open("POST", "http://localhost:5000/destinationUrl"); 
+                    xmlhttp.setRequestHeader("Content-Type", "application/json"); 
+                    xmlhttp.send(JSON.stringify({ destination: event.target.href, clickId: visitClickId })); 
+                }
+            });
+
+        </script>
+        <!-- <script>var onload; window.addEventListener("load", function() { onload = new Date(); }); window.addEventListener("beforeunload", function() { var unload = new Date(); var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); var visitClickId = document.cookie.split('=')[1]; var xmlhttp = new XMLHttpRequest(); xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); xmlhttp.setRequestHeader("Content-Type", "application/json"); xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); event.returnValue = ''; });</script> -->
     </body>
 </html>
