@@ -19,53 +19,53 @@
             <title></title>
           </head>
           <body>
-            <div id="content" style="position:absolute; left: 0; right: 0; bottom: 0; top: 0px;">
+         <div id="content" style="position:absolute; left: 0; right: 0; bottom: 0; top: 0px;">
               <iframe id='iframe' src="" width="100%" height="100%" style="border:0;"></iframe>
-            </div>
-            <script type="text/javascript">
-              $(document).ready(function(){
+		    </div>
+		    <script type="text/javascript">
+		      $(document).ready(function(){
 
-                var iframe = document.getElementsByTagName("iframe")[0];
-                let url = "http://localhost:5000/rotator";
-                let queryString = window.location.search;
-                queryString = queryString.substring(1);
+			var iframe = document.getElementsByTagName("iframe")[0];
+			let url = "http://localhost:5000/rotator";
+			let queryString = window.location.search;
+			queryString = queryString.substring(1);
 
 
-                let data = JSON.stringify(Object.assign({
-                  campaignId : "55b719fa-7b6b-4919-9033-18594e34c0b2",
-                  url: window.location.href
-                },{customVars : parseQueryString(queryString)}))
+			let data = JSON.stringify(Object.assign({
+			  campaignId : "b48af5e3-4c45-4e52-958f-053c90d62810",
+			  url: window.location.href
+			},{customVars : parseQueryString(queryString)}))
 
-                $.ajax({
-                    type:'POST',
-                    url: url,
-                    data:data,
-                    crossDomain:true,
-                    xhrFields: { withCredentials: true },
-                    dataType:'json',
-                    success:function(data) {
-                      if(data.directLinking) {
-                        window.location.replace(data.url)
-                      } else {
-                        iframe.src = data.url + '?cid=' + data.cid;
-                        document.title = data.url;
-                        document.cookie = 'cid=' + data.cid;
-                      }
-                    },
-                });
-              })
+			$.ajax({
+			    type:'POST',
+			    url: url,
+			    data:data,
+			    crossDomain:true,
+			    xhrFields: { withCredentials: true },
+			    dataType:'json',
+			    success:function(data) {
+			      if(data.directLinking) {
+				window.location.replace(data.url)
+			      } else {
+				iframe.src = data.url + '?cid=' + data.cid;
+				document.title = data.url;
+				document.cookie = 'cid=' + data.cid;
+			      }
+			    },
+			});
+		      })
 
-              var parseQueryString = function( queryString ) {
-                  var params = {}, queries, temp, i, l;
-                  queries = queryString.split("&");
-                  for ( i = 0, l = queries.length; i < l; i++ ) {
-                      temp = queries[i].split('=');
-                      params[temp[0]] = temp[1];
-                  }
-                  return params;
-              };
+		      var parseQueryString = function( queryString ) {
+			  var params = {}, queries, temp, i, l;
+			  queries = queryString.split("&");
+			  for ( i = 0, l = queries.length; i < l; i++ ) {
+			      temp = queries[i].split('=');
+			      params[temp[0]] = temp[1];
+			  }
+			  return params;
+		      };
 
-            </script>
-          </body>
-        </html>
-    
+		    </script>
+		  </body>
+		</html>
+	    
