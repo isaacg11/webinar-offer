@@ -17,7 +17,7 @@
                 var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); 
                 var visitClickId = document.cookie.split('=')[1]; 
                 var xmlhttp = new XMLHttpRequest(); 
-                xmlhttp.open("POST", "http://localhost:5000/landingVisitor", false); 
+                xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); 
                 xmlhttp.setRequestHeader("Content-Type", "application/json"); 
                 xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); 
                 if(xmlhttp.status === 200) {
