@@ -7,13 +7,40 @@
         <a href="http://localhost:5000/click" target="_blank">offer</a>
         <script>
             var onload; 
-            window.onload = function(e) {
+            window.addEventListener('load', function(e) {
                 onload = new Date(); 
-            }
+            })
 
-            window.unload = function(e) {
-                window.confirm('are you sure?')
-            }
+            window.addEventListener('unload', function(e) {
+                navigator.sendBeacon("http://localhost:5000/landingVisitor", JSON.stringify({ duration: 'test', clickId: 'test' }))
+                if(e) {
+                    e.returnValue = 'Any string';
+                } else {
+                    return 'Any string';
+                }
+            })
+
+            // window.onload = function(e) {
+            //     onload = new Date(); 
+            // }
+
+            // window.unload = function(e) {
+            //     var e = e || window.event;
+            //     var unload = new Date(); 
+            //     var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); 
+            //     var visitClickId = document.cookie.split('=')[1]; 
+            //     var xmlhttp = new XMLHttpRequest(); 
+            //     xmlhttp.open("POST", "http://localhost:5000/landingVisitor", false); 
+            //     xmlhttp.setRequestHeader("Content-Type", "application/json"); 
+            //     xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); 
+            //     if(request.status === 200) {
+            //         if(e) {
+            //             e.returnValue = 'Any string';
+            //         } else {
+            //             return 'Any string';
+            //         }
+            //     }
+            // }
 
         </script>
     </body>
