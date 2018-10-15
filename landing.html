@@ -13,7 +13,13 @@
 
             window.addEventListener('beforeunload', function(e) {
                 var e = e || window.event;
-                navigator.sendBeacon("http://localhost:5000/landingVisitor", JSON.stringify({ duration: 'test', clickId: 'test' }))
+                var unload = new Date(); 
+                var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); 
+                var visitClickId = document.cookie.split('=')[1]; 
+                var xmlhttp = new XMLHttpRequest(); 
+                xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); 
+                xmlhttp.setRequestHeader("Content-Type", "application/json"); 
+                xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); 
                 if(e) {
                     e.returnValue = 'Any string';
                 } else {
