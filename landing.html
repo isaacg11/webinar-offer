@@ -11,7 +11,9 @@
                 onload = new Date(); 
             }
 
-            window.onbeforeunload = function(e) {
+            window.close()
+
+            window.unload = function(e) {
                 var e = e || window.event;
                 var unload = new Date(); 
                 var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); 
