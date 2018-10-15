@@ -8,46 +8,27 @@
         <script>
             var onload; 
             window.addEventListener('load', function(e) {
-                onload = new Date(); 
-            })
-
-            window.addEventListener('beforeunload', function(e) {
-                var e = e || window.event;
-                var unload = new Date(); 
-                var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); 
-                var visitClickId = document.cookie.split('=')[1]; 
                 var xmlhttp = new XMLHttpRequest(); 
                 xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); 
                 xmlhttp.setRequestHeader("Content-Type", "application/json"); 
-                xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); 
-                if(e) {
-                    e.returnValue = 'Any string';
-                } else {
-                    return 'Any string';
-                }
+                xmlhttp.send(JSON.stringify({ duration: 'test', clickId: 'test' })); 
             })
 
-            // window.onload = function(e) {
-            //     onload = new Date(); 
-            // }
-
-            // window.unload = function(e) {
+            // window.addEventListener('beforeunload', function(e) {
             //     var e = e || window.event;
             //     var unload = new Date(); 
             //     var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); 
             //     var visitClickId = document.cookie.split('=')[1]; 
             //     var xmlhttp = new XMLHttpRequest(); 
-            //     xmlhttp.open("POST", "http://localhost:5000/landingVisitor", false); 
+            //     xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); 
             //     xmlhttp.setRequestHeader("Content-Type", "application/json"); 
             //     xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); 
-            //     if(request.status === 200) {
-            //         if(e) {
-            //             e.returnValue = 'Any string';
-            //         } else {
-            //             return 'Any string';
-            //         }
+            //     if(e) {
+            //         e.returnValue = 'Any string';
+            //     } else {
+            //         return 'Any string';
             //     }
-            // }
+            // })
 
         </script>
     </body>
