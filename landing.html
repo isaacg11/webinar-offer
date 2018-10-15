@@ -4,12 +4,12 @@
     </head>
     <body>
         <h1>Landing Page</h1>
-        <a href="http://localhost:5000/click" target="_blank">offer</a>
+        <a href="https://790e2e41.ngrok.io/click" target="_blank">offer</a>
         <script>
             var onload; 
             window.addEventListener('load', function(e) {
                 var xmlhttp = new XMLHttpRequest(); 
-                xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); 
+                xmlhttp.open("POST", "https://790e2e41.ngrok.io/landingVisitor"); 
                 xmlhttp.setRequestHeader("Content-Type", "application/json"); 
                 xmlhttp.send(JSON.stringify({ duration: 'test', clickId: 'test' })); 
             })
