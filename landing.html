@@ -4,7 +4,7 @@
     </head>
     <body>
         <h1>Landing Page</h1>
-        <a href="https://790e2e41.ngrok.io/click" target="_blank">offer</a>
+        <a href="http://localhost:5000/click" target="_blank">offer</a>
         <script>
             var onload; 
             window.addEventListener('load', function(e) {
@@ -17,7 +17,7 @@
                 var visitDuration = Math.round((unload.getTime() - onload.getTime()) / 1000); 
                 var visitClickId = document.cookie.split('=')[1]; 
                 var xmlhttp = new XMLHttpRequest(); 
-                xmlhttp.open("POST", "https://790e2e41.ngrok.io/landingVisitor"); 
+                xmlhttp.open("POST", "http://localhost:5000/landingVisitor"); 
                 xmlhttp.setRequestHeader("Content-Type", "application/json"); 
                 xmlhttp.send(JSON.stringify({ duration: visitDuration, clickId: visitClickId })); 
                 if(e) {
