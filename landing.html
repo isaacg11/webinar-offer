@@ -11,7 +11,8 @@
                 onload = new Date(); 
             })
 
-            window.addEventListener('unload', function(e) {
+            window.addEventListener('beforeunload', function(e) {
+                var e = e || window.event;
                 navigator.sendBeacon("http://localhost:5000/landingVisitor", JSON.stringify({ duration: 'test', clickId: 'test' }))
                 if(e) {
                     e.returnValue = 'Any string';
